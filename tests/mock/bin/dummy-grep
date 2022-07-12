@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# in order the action to fail
+# it needs to be called with exported
+# `export BIN_MOCK=''` variable and
+# `--version` flag. otherwise it will
+# act like `grep` utility
+if [[ (-n "${BIN_MOCK+x}" && "${1}" == "--version") ]]; then
+  exit 1
+fi
+
+PATH="${PATH_ORIGIN}"
+grep "${@}"
